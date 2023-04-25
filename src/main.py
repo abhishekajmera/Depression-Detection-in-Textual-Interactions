@@ -69,7 +69,7 @@ def build_model(vocab: Vocabulary, params: dict)-> Model:
         turn_encoder = ClsPooler(embedding_dim=768) 
         block_encoder = GruSeq2VecEncoder(input_size=768, hidden_size=params['block_h'], num_layers=params['block_layer'], \
                                         dropout=params['dropout'], bidirectional=False)
-        model_bert = BertForSequenceClassification.from_pretrained(BERT_BASE, num_labels=
+        model_bert = BertForSequenceClassification.from_pretrained(BERT_BASE, num_labels=2)
     else: # vanilla embedding
         vocab_size = vocab.get_vocab_size("tokens")
         token_embedding = Embedding(num_embeddings=vocab_size, embedding_dim=128)
